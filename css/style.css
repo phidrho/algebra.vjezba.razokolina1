@@ -1,3 +1,3 @@
-table-pokemon td tr {
-    border: 1px, solid, orange;
+.table-pokemon {
+    border: 1px solid orange;
 }
