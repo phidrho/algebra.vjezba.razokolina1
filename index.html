@@ -6,21 +6,22 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
 </head>
 <body>
     <script id="lista-pokemona" type="text/x-handlebars">
-        <table class="table-pokemon">
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Redni broj</th>
-                    <th>Ime pokemona</th>
-                    <th>Poveznica</th>
+                    <th scope="col">Redni broj</th>
+                    <th scope="col">Ime pokemona</th>
+                    <th scope="col">Poveznica</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each pokemon}}
                 <tr>
-                    <td>{{matematika @index '+' 1}}</td> <!-- dodana funkcija matematika u našem javascriptu -->
+                    <th scope="row">{{matematika @index '+' 1}}</td> <!-- dodana funkcija matematika u našem javascriptu -->
                     <td>{{this.name}}</td>
                     <td><a href="{{this.url}}">{{this.name}}</a></td>
                 </tr>
@@ -33,6 +34,8 @@
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <script src="./js/pokemon-data.js"></script>
     </script>
 </body>
