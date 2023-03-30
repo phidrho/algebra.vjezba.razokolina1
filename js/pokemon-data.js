@@ -11,10 +11,10 @@ Handlebars.registerHelper("matematika", function(indeks, operator, broj){
     }[operator];
 })
 
-// https://pokeapi.co/api/v2/pokemon-color/yellow/
+// https://pokeapi.co/api/v2/pokemon-color/yellow/ - za žute pokemone
 
 let xhrRequest = new XMLHttpRequest();
-xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/yellow/", true)
+xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
 
 function popuniPokemone(){
     const resp = JSON.parse(xhrRequest.response);

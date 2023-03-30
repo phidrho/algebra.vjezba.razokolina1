@@ -14,6 +14,7 @@
                 <tr>
                     <th>Redni broj</th>
                     <th>Ime pokemona</th>
+                    <th>Poveznica</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                 <tr>
                     <td>{{matematika @index '+' 1}}</td> <!-- dodana funkcija matematika u našem javascriptu -->
                     <td>{{this.name}}</td>
+                    <td><a href="{{this.url}}">{{this.name}}</a></td>
                 </tr>
                 {{/each}}
             </tbody>
