@@ -1,3 +1,16 @@
+Handlebars.registerHelper("matematika", function(indeks, operator, broj){
+    let tmpPrvi = parseInt(indeks);
+    let tmpDrugi = parseInt(broj);
+
+    return {
+        "+" : tmpPrvi + tmpDrugi,
+        "-" : tmpPrvi - tmpDrugi,
+        "*" : tmpPrvi * tmpDrugi,
+        "/" : tmpPrvi / tmpDrugi,
+        "%" : tmpPrvi % tmpDrugi,
+    }[operator];
+})
+
 // https://pokeapi.co/api/v2/pokemon-color/yellow/
 
 let xhrRequest = new XMLHttpRequest();
@@ -8,7 +21,7 @@ function popuniPokemone(){
 //    console.log(resp)
     const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
     const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
-    const kontekstPodaci = {pokemon: resp.pokemon_species};
+    const kontekstPodaci = {pokemon: resp.pokemon_species.slice(0,20)};
     const html = template(kontekstPodaci);
 
     document.getElementById("div-pokemoni").innerHTML = html;
