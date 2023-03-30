@@ -23,7 +23,7 @@
                 <tr>
                     <th scope="row" class="d-none d-sm-block">{{matematika @index '+' 1}}</td> <!-- dodana funkcija matematika u našem javascriptu -->
                     <td>{{this.name}}</td>
-                    <td><a href="{{this.url}}">{{this.name}}</a></td>
+                    <td><a href="#" data-bs-toggle="popover" data-bs-title="naslov" data-bs-content="{{this.url}}"> popover {{this.name}}</a></td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -35,7 +35,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <script src="./js/pokemon-data.js"></script>
     </script>
 </body>
