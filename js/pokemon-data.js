@@ -5,8 +5,13 @@ xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/yellow/", true)
 
 function popuniPokemone(){
     const resp = JSON.parse(xhrRequest.response);
+//    console.log(resp)
+    const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
+    const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
+    const kontekstPodaci = {pokemon: resp.pokemon_species};
+    const html = template(kontekstPodaci);
 
-    console.log(resp)
+    document.getElementById("div-pokemoni").innerHTML = html;
 }
 
 //funkcija koja će se pozvati na loadu stranice

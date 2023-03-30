@@ -17,13 +17,19 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each pokemon}}
                 <tr>
-                    <td>{{ @index }}</td>
-                    <td>{{ imePokemona }}</td>
+                    <td>{{@index}}</td>
+                    <td>{{this.name}}</td>
                 </tr>
+                {{/each}}
             </tbody>
         </table>
     </script>
+
+    <div id="div-pokemoni">
+
+    </div>
 
     <script src="./js/pokemon-data.js"></script>
     </script>
