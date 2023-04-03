@@ -65,7 +65,7 @@ $(document).ready(function () {
 
     function registrirajMouseEvent(){
         $('table tr').on('mouseenter', event => {
-            $(event.currentTarget).css('background-color', 'magenta');
+            $(event.currentTarget).css('backgroundColor', 'magenta');
         });
         $('table tr').on('mouseleave', event => {
             $(event.currentTarget).removeAttr('style');
