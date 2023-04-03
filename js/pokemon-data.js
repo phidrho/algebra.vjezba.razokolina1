@@ -63,10 +63,21 @@ $(document).ready(function () {
         }, 2000);
     }
 
+    function registrirajMouseEvent(){
+        $('table tr').on('mouseenter', event => {
+            $(event.currentTarget).css('background-color', 'magenta');
+        });
+        $('table tr').on('mouseleave', event => {
+            $(event.currentTarget).removeAttr('style');
+        });
+    }
+
+
     function nakonRenderiranjaStraniceOdradi(){
         dodajPruge();
         dodajHeaderBoju();
         nakon2Sekunde();
+        registrirajMouseEvent();
     }
 
     //funkcija koja će se pozvati na loadu stranice
