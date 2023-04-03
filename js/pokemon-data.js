@@ -77,4 +77,11 @@ $(document).ready(function () {
 
     xhrRequest.send();
 
+
+    $(window).resize(() => {
+        console.log("Width " + window.innerWidth);
+        console.log("Height " + $(window).height());
+    })
+
+
 });
