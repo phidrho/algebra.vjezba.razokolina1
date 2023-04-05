@@ -15,11 +15,11 @@ $(document).ready(function () {
 
     // https://pokeapi.co/api/v2/pokemon-color/yellow/ - za žute pokemone
 
-    let xhrRequest = new XMLHttpRequest();
-    xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
+//    let xhrRequest = new XMLHttpRequest();
+//    xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
 
     function popuniPokemone() {
-        const resp = JSON.parse(xhrRequest.response);
+        //const resp = JSON.parse(xhrRequest.response);
         //    console.log(resp)
         const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
         const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
@@ -81,18 +81,19 @@ $(document).ready(function () {
     }
 
     //funkcija koja će se pozvati na loadu stranice
-    xhrRequest.onload = function () {
-        popuniPokemone();
-        nakonRenderiranjaStraniceOdradi();
-    }
+    //xhrRequest.onload = function () {
+//        popuniPokemone();
+//        nakonRenderiranjaStraniceOdradi();
+//    }
 
-    xhrRequest.send();
+//    xhrRequest.send();
 
 
     $(window).resize(() => {
         console.log("Width " + window.innerWidth);
         console.log("Height " + $(window).height());
     })
+
 
 
 });
