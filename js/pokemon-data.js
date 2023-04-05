@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     function popuniPokemone(podaci) {
         //const resp = JSON.parse(xhrRequest.response);
-        console.log("podaci:" + JSON.stringify(podaci));
+        //console.log("podaci:" + JSON.stringify(podaci));
         const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
         const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
         const kontekstPodaci = { pokemon: podaci.pokemon_species.slice(0, 20) };
@@ -96,6 +96,7 @@ $(document).ready(function () {
 
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-color/red/",
+        timeout: 100
       })
         .done(function(primljeni_podaci) {
             popuniPokemone(primljeni_podaci);
@@ -103,5 +104,11 @@ $(document).ready(function () {
         })
         .fail(function() {
             console.log( "greska pri fetchu" );
+            $('<div id="error"></div>')
+            .insertAfter($('#div-pokemoni'))
+            .text('Nije učitano, pokušaj ponovo. Možda je do timeouta!');
+        })
+        .always(function() {
+            console.log("ovo se uvijek izvodi")
         });
 });
