@@ -15,15 +15,15 @@ $(document).ready(function () {
 
     // https://pokeapi.co/api/v2/pokemon-color/yellow/ - za žute pokemone
 
-    let xhrRequest = new XMLHttpRequest();
-    xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
+//    let xhrRequest = new XMLHttpRequest();
+//    xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
 
-    function popuniPokemone() {
-        const resp = JSON.parse(xhrRequest.response);
-        //    console.log(resp)
+    function popuniPokemone(podaci) {
+        //const resp = JSON.parse(xhrRequest.response);
+        //console.log("podaci:" + JSON.stringify(podaci));
         const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
         const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
-        const kontekstPodaci = { pokemon: resp.pokemon_species.slice(0, 20) };
+        const kontekstPodaci = { pokemon: podaci.pokemon_species.slice(0, 20) };
         const html = template(kontekstPodaci);
 
         document.getElementById("div-pokemoni").innerHTML = html;
@@ -81,12 +81,12 @@ $(document).ready(function () {
     }
 
     //funkcija koja će se pozvati na loadu stranice
-    xhrRequest.onload = function () {
-        popuniPokemone();
-        nakonRenderiranjaStraniceOdradi();
-    }
+    //xhrRequest.onload = function () {
+//        popuniPokemone();
+//        nakonRenderiranjaStraniceOdradi();
+//    }
 
-    xhrRequest.send();
+//    xhrRequest.send();
 
 
     $(window).resize(() => {
@@ -94,5 +94,21 @@ $(document).ready(function () {
         console.log("Height " + $(window).height());
     })
 
-
+    $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon-color/red/",
+        timeout: 100
+      })
+        .done(function(primljeni_podaci) {
+            popuniPokemone(primljeni_podaci);
+            nakonRenderiranjaStraniceOdradi();
+        })
+        .fail(function() {
+            console.log( "greska pri fetchu" );
+            $('<div id="error"></div>')
+            .insertAfter($('#div-pokemoni'))
+            .text('Nije učitano, pokušaj ponovo. Možda je do timeouta!');
+        })
+        .always(function() {
+            console.log("ovo se uvijek izvodi")
+        });
 });
