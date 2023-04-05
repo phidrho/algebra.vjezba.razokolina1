@@ -16,6 +16,8 @@
                     <th scope="col" class="d-none d-sm-block">Redni broj</th>
                     <th scope="col">Ime pokemona</th>
                     <th scope="col">Poveznica</th>
+                    <th scope="col">Stanište</th>
+                    <th scope="col">Brzina rasta</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +26,8 @@
                     <th scope="row" class="d-none d-sm-block">{{matematika @index '+' 1}}</td> <!-- dodana funkcija matematika u našem javascriptu -->
                     <td>{{this.name}}</td>
                     <td><a href="#" data-bs-toggle="popover" data-bs-title="naslov" data-bs-content="{{this.url}}"> popover {{this.name}}</a></td>
+                    <td>{{this.habi}}</td>
+                    <td>{{this.grow}}</td>
                 </tr>
                 {{/each}}
             </tbody>
