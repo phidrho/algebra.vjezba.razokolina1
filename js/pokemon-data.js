@@ -18,12 +18,12 @@ $(document).ready(function () {
 //    let xhrRequest = new XMLHttpRequest();
 //    xhrRequest.open("GET", "https://pokeapi.co/api/v2/pokemon-color/red/", true)
 
-    function popuniPokemone() {
+    function popuniPokemone(podaci) {
         //const resp = JSON.parse(xhrRequest.response);
-        //    console.log(resp)
+        console.log("podaci:" + JSON.stringify(podaci));
         const sourceHTML = document.getElementById("lista-pokemona").innerHTML;
         const template = Handlebars.compile(sourceHTML); // koristimo funkcionalnost handlebara za popunjavanje tablice
-        const kontekstPodaci = { pokemon: resp.pokemon_species.slice(0, 20) };
+        const kontekstPodaci = { pokemon: podaci.pokemon_species.slice(0, 20) };
         const html = template(kontekstPodaci);
 
         document.getElementById("div-pokemoni").innerHTML = html;
@@ -94,6 +94,14 @@ $(document).ready(function () {
         console.log("Height " + $(window).height());
     })
 
-
-
+    let jqueryAJAX = $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon-color/red/",
+      })
+        .done(function(primljeni_podaci) {
+            popuniPokemone(primljeni_podaci);
+            nakonRenderiranjaStraniceOdradi();
+        })
+        .fail(function() {
+            console.log( "greska pri fetchu" );
+        });
 });
