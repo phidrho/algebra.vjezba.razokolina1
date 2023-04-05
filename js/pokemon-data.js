@@ -94,7 +94,7 @@ $(document).ready(function () {
         console.log("Height " + $(window).height());
     })
 
-    let jqueryAJAX = $.ajax({
+    $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-color/red/",
       })
         .done(function(primljeni_podaci) {
